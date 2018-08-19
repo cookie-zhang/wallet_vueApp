@@ -1,22 +1,43 @@
 <template>
   <div>
     <index-header></index-header>
-    <div class='home'>
-      {{msg}}
-    </div>
+    <index-swipper :sliders='sliders'></index-swipper>
   </div>
 </template>
 <script>
 import indexHeader from '../../components/header.vue'
+import indexSwipper from './swipper'
+import axios from 'axios'
 export default {
   name: 'home',
   data () {
     return {
-      msg: 'home'
+      sliders:[]
+    }
+  },
+  created () {
+    this.handeIndexSwiperData()
+  },
+  methods: {
+    getIndexSwiper () {
+      axios.get('./index.json')
+      .then(this.handeIndexSwiperData.bind(this))
+      .catch(this.handeIndexSwiperDataErr.bind(this))
+    },
+    handeIndexSwiperData (res) {
+      if(res){
+        console.log('成功')
+      }else{
+        this.handeIndexSwiperDataErr()
+      }
+    },
+    handeIndexSwiperDataErr (error) {
+      console.log('失败')
     }
   },
   components: {
-    indexHeader
+    indexHeader,
+    indexSwipper
   }
 }
 </script>
