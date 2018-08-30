@@ -2,10 +2,12 @@
   <div class="main">
     <index-header></index-header>
     <index-swipper :sliders='sliders'></index-swipper>
+    <index-footer></index-footer>
   </div>
 </template>
 <script>
 import indexHeader from '../../components/header.vue'
+import indexFooter from '../../components/footer.vue'
 import indexSwipper from './swipper'
 import axios from 'axios'
 export default {
@@ -37,7 +39,8 @@ export default {
   },
   components: {
     indexHeader,
-    indexSwipper
+    indexSwipper,
+    indexFooter
   }
 }
 </script>

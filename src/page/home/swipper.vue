@@ -1,9 +1,9 @@
 <template>
    <swiper class="banner index-banner" :options="swiperOption">
-    <swiper-slide v-for="item of sliders" :key='item.id'>
+    <swiper-slide class="swipper" v-for="item of sliders" :key='item.id'>
       <img class="slider_img" :src="item.imgUrl" />
     </swiper-slide>
-    <div class="swiper-pagination"  slot="pagination"></div>
+    <div class="swiper-pagination"  slot="pagination">1</div>
   </swiper>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: 1000,
+        autoplay: 2000,
         pagination: '.swiper-pagination'
       }
     }
@@ -29,9 +29,11 @@ export default {
   overflow: hidden
   height: 0
   padding-bottom: 31.25%
-  .slider_img
+  .swipper
     float left
-    width: 100%
+    .slider_img
+      float left
+      width: 100%
 </style>
 <style lang="stylus">
   .index-banner
