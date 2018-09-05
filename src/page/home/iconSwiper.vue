@@ -1,6 +1,6 @@
 <template>
    <swiper class="iconBanner" :options="swiperOption">
-    <swiper-slide class="swipper" v-for="(page, index) of pages" :key='index'>
+    <swiper-slide class="swipper" v-for="(page, index) in pages" :key='index'>
       <div class="icons-list">
         <div v-for="item in page" :key="item.id" class="icons-item">
           <img class="icon-img" :src="item.imgUrl" />
@@ -31,9 +31,9 @@ export default {
       this.iconSwiper.forEach((value, index) => {
         let page = Math.floor(index / 10) // 分页page为页数
         if (!pages[page]) {
-            pages[page] = []
-          }
-          pages[page].push(value)
+          pages[page] = []
+        }
+        pages[page].push(value)
       })
       return pages
     }
@@ -44,25 +44,34 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.iconBanner
-  float left
-  width: 100%
-  overflow: hidden
-  height: 0
-  height 3.7rem
-  .icons-list
-    display: flex
-    flex-wrap: wrap
-    .icons-item
-      display flex
-      flex-direction column
-      align-items center
-      width 20%
-      margin-top .2rem
-      .icon-img
-        width .9rem
-        height .9rem
-      .icon-name
-        font-size .24rem
-        margin-top .2rem
+.iconBanner {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  height: 0;
+  height: 3.7rem;
+
+  .icons-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .icons-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      margin-top: 0.2rem;
+
+      .icon-img {
+        width: 0.9rem;
+        height: 0.9rem;
+      }
+
+      .icon-name {
+        font-size: 0.24rem;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}
 </style>

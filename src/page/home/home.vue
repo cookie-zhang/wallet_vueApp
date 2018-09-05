@@ -4,6 +4,7 @@
     <index-swipper :sliders='sliders'></index-swipper>
     <icon-swiper :iconSwiper="iconSwiper"></icon-swiper>
     <div class="busniss_seller">商家推荐</div>
+    <batter-scroll class="scroll" :batterScroll='batterScroll'></batter-scroll>
     <index-footer></index-footer>
   </div>
 </template>
@@ -12,13 +13,15 @@ import indexHeader from '../../components/header.vue'
 import indexFooter from '../../components/footer.vue'
 import indexSwipper from './swipper'
 import iconSwiper from './iconSwiper'
+import batterScroll from './batterScroll'
 import axios from 'axios'
 export default {
   name: 'home',
   data () {
     return {
       sliders: [],
-      iconSwiper: []
+      iconSwiper: [],
+      batterScroll: []
     }
   },
   created () {
@@ -34,6 +37,7 @@ export default {
       if (res) {
         this.sliders = res.data.data.swiper
         this.iconSwiper = res.data.data.icons
+        this.batterScroll = res.data.data.hotlist
       } else {
         this.handeIndexSwiperDataErr()
       }
@@ -46,7 +50,8 @@ export default {
     indexHeader,
     indexSwipper,
     iconSwiper,
-    indexFooter
+    indexFooter,
+    batterScroll
   }
 }
 </script>
@@ -55,11 +60,6 @@ export default {
   .main
     display flex
     flex-direction column
-    position absolute
-    top 0
-    left 0
-    right 0
-    bottom 0
     .busniss_seller
       position relative
       width 100%
@@ -86,4 +86,7 @@ export default {
         width: .533333rem;
         height: .026667rem;
         background-color: #999;
+    .scroll
+      flex: 1
+      overflow: hidden
 </style>
